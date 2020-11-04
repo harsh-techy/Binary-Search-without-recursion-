@@ -1,0 +1,33 @@
+#include<stdio.h>
+int bin(int a[10],int x,int low,int high)
+{
+  if(low<=high)  
+  {   int mid = (low + high)/2;
+      if(x==a[mid])
+        return mid;
+      if (a[mid] < x)
+        return bin(a,x,mid+1,high); 
+      else
+        return bin(a,x,low,mid-1);   }
+  return -1;
+}
+int main()
+{
+    int a[10] = {1,7,14,26,45,58,69,77,89,93},low=0,mid=0,high=9,x,flag=0;
+    printf("\n===========================================================\n");
+      printf("             BINARY SEARCH (USING RECURSION)               ");
+    printf("\nNAME : TANVEER AHMED ANSARI\nROLL NO. : 1901610100218\n");
+    printf("\nenter value to be searched :");
+    scanf("%d",&x);
+    printf("\nsorted Array :\n");
+    for(int i=0;i<10;i++)
+        printf(" %d",a[i]);
+    printf("\n");
+    int pos = bin(a,x,low,high);
+    if(pos==(-1))
+     printf("\n%d is not present..",x);
+    else
+     printf("\n%d is at %d position..",x,pos+1);
+    printf("\n===========================================================\n");
+    return 0;
+}
